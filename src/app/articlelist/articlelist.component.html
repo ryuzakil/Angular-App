@@ -1,0 +1,82 @@
+<div class="col-md-9">
+  <div class="feed-toggle">
+    <ul class="nav nav-pills outline-active">
+      <li class="nav-item">
+        <span class="nav-link" [class.active]  ="userFeed" [class.disabled] ="!isAuthenticatedUser" (click) = "GetUserArticles()" >Your Feed</span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link" [class.active] ="!userFeed" (click) = "GetArticles()" >Global Feed</span>
+      </li>
+    </ul>
+  </div>
+
+
+<div>
+  <div class="article-page">
+  
+      <div class="container page">
+    
+        <div class="article-actions">
+          <div class="article-meta">
+            </div>
+        </div>
+    
+        <div class="row">
+    
+          <div class="col-xs-12 col-md-8 ">
+              <div  *ngIf ="!userFeed">
+              <div  *ngFor="let item of articles | paginate: { itemsPerPage: 10, currentPage: p }" >         
+              <div class="card">
+              <div class="card-block">
+                <p class="card-text">{{item.title}}</p>
+              </div>
+              <div class="card-footer">
+                <a href="" class="comment-author">
+                  <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+                </a>
+                &nbsp;
+                <a href="" class="comment-author">{{item.author.username}}</a>
+                <span class="date-posted">{{item.updatedAt}}</span>
+              <a routerLink="/articleslist/{{item.slug}}" class="btn btn-sm btn-primary mybutton" >
+               Open Article
+              </a>
+                
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          <div *ngIf ="userFeed">
+              <div  *ngFor="let item of userArticles | paginate: { itemsPerPage: 10, currentPage: p }" >         
+                  <div class="card">
+                  <div class="card-block">
+                    <p class="card-text">{{item.title}}</p>
+                  </div>
+                  <div class="card-footer">
+                    <a href="" class="comment-author">
+                      <img src="http://i.imgur.com/Qr71crq.jpg" class="comment-author-img" />
+                    </a>
+                    &nbsp;
+                    <a href="" class="comment-author">{{item.author.username}}</a>
+                    <span class="date-posted">{{item.updatedAt}}</span>
+                    <span></span>
+                    <button (click) = "ShowViewPage(item)"   class="btn btn-sm btn-primary" >
+                      View                 
+                    </button>
+                    <a routerLink="/edit/{{item.slug}}" class="btn btn-sm btn-primary mybutton" >
+                      Edit/Delete Article
+                    </a>
+                    
+                  </div>
+                </div>
+                </div>
+          </div>
+          
+        </div>
+      </div>
+    
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>
+    </div>
+    <router-outlet></router-outlet>

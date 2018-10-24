@@ -1,0 +1,22 @@
+<div class="auth-page" *ngIf = "!isAuthenticatedUser">
+    <div class="container page">
+      <div class="row">
+  
+        <div class="col-md-6 offset-md-3 col-xs-12">
+          <h1 class="text-xs-center">Sign In To Continue</h1>
+          <form ngNativeValidate>
+            <fieldset class="form-group">
+              <input  [(ngModel)] = "userData.email" name ="email" class="form-control form-control-lg" type="text" placeholder="Email" required>
+            </fieldset>
+            <fieldset class="form-group">
+              <input  [(ngModel)] = "userData.password" name ="password" class="form-control form-control-lg" type="password" placeholder="Password" required>
+            </fieldset>
+            <button (click) = "CheckLogin()"  class="btn btn-lg btn-primary pull-xs-right">
+              Sign In
+            </button>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>

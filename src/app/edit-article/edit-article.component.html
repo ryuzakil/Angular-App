@@ -1,0 +1,29 @@
+<div class="editor-page">
+    <div class="container page">
+      <div class="row">
+  
+        <div class="col-md-10 offset-md-1 col-xs-12">
+          <form>
+            <fieldset>
+              <fieldset class="form-group">
+                  <input type="text" name ="title" class="form-control form-control-lg" [(ngModel)] = "updatedArticle.title" [placeholder]= "currentArticle?.title">
+              </fieldset>
+              <fieldset class="form-group">
+                  <input type="text" class="form-control" name ="description" [(ngModel)] = "updatedArticle.description" [placeholder] = "currentArticle?.description">
+              </fieldset>
+              <fieldset class="form-group">
+                  <textarea class="form-control" rows="8"  name ="body" [(ngModel)] = "updatedArticle.body" [placeholder] = "currentArticle?.body"></textarea>
+              </fieldset>
+              <button (click) = "PostArticle()" class="btn btn-lg  btn-primary" type="button">
+                  Publish Article
+              </button>
+              <button (click) = "DeleteArticle()" class="btn btn-lg pull-xs-right btn-primary" type="button">
+                  Delete Article
+              </button>
+            </fieldset>
+          </form>
+        </div>
+  
+      </div>
+    </div>
+  </div>

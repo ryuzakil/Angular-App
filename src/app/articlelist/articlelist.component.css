@@ -1,0 +1,23 @@
+span{
+    padding-left:40px;
+    margin-top:10px;
+    margin-left:30px;
+}
+.itemlist{
+    margin-left:40px;
+}
+.Feed{
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+    color: #039be5;
+    background-color: #cfd8dc;
+}
+.mybutton{
+    position: absolute;
+    right:30px;
+    bottom:12px;
+}

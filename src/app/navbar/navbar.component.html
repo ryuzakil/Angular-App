@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chatblog</title>
+    <!-- Import Ionicon icons & Google Fonts our Bootstrap theme relies on -->
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Titillium+Web:700|Source+Serif+Pro:400,700|Merriweather+Sans:400,700|Source+Sans+Pro:400,300,600,700,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Import the custom Bootstrap 4 theme from our hosted CDN -->
+    <link rel="stylesheet" href="//demo.productionready.io/main.css">
+  </head>
+  <body>
+
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">ChatBlog</a>
+        <ul class="nav navbar-nav pull-xs-right">
+          <li class="nav-item">
+            <!-- Add "active" class when you're on that page" -->
+            <a class="nav-link active" routerLink="" routerLinkActive="active" >Home</a>
+          </li>
+          <span *ngIf ="!isUserAuthenticated">
+          <li class="nav-item">
+            <!-- Add "active" class when you're on that page" -->
+            <a class="nav-link active" routerLink ="/login" routerLinkActive="active" >Sign in</a>
+          </li>
+          <li class="nav-item">
+            <!-- Add "active" class when you're on that page" -->
+            <a class="nav-link active" routerLink ="/register" routerLinkActive="active" >Register</a>
+          </li>
+          </span>
+          <li *ngIf ="isUserAuthenticated"  class="nav-item">
+            <a class="nav-link" routerLink ="/create/{{currentUser.username}}">
+              <i class="ion-compose"></i>&nbsp;New Post
+            </a>
+          </li>
+          <span *ngIf ="isUserAuthenticated">
+          <li class="nav-item">
+            <a class="nav-link" (click) ="SignOut()"  routerLink="/login"> Sign Out</a>
+          </li>
+        </span>
+        </ul>
+      </div>
+    </nav>
+<router-outlet></router-outlet>
